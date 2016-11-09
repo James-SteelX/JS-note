@@ -14,9 +14,9 @@
       document.getElementById("app").innerHTML = list;
     };
 
-    NoteController.prototype.changeNote = function() {
-      window.addEventListener("hashchange", this.showNoteOnPage());
-    };
+    // NoteController.prototype.changeNote = function() {
+    //   window.addEventListener("hashchange", this.showNoteOnPage());
+    // };
 
     NoteController.prototype.showNoteOnPage = function() {
       var s = this.getNoteFromUrl(window.location);
@@ -25,7 +25,6 @@
 
    NoteController.prototype.getNoteFromUrl = function(location) {
       var urlID = location.hash.split("#notes/")[1];
-      console.log(urlID)
       return this.noteListView.list.getNoteText(urlID);
     };
 
@@ -35,6 +34,11 @@
         .getElementById("note")
         .innerHTML = note;
     };
+
+    // NoteController.prototype.interceptForm = function() {
+    //   window.addEventListener("submit", console.log("hi"))
+    // };
+
 
     exports.NoteController = NoteController;
 
