@@ -24,3 +24,11 @@ function testNoteListViewWithManyNotes() {
   assert.isTrue(noteListView.getHTML() === "<ul><li><div>hi there</div></li><li><div>again?</div></li><li><div>hello</div></li></ul>");
 }
 testNoteListViewWithManyNotes()
+
+function testNoteListViewShortensNotesWhenLong() {
+  var noteList = new NoteList();
+  noteList.createNote('HELLODAVIDHELLOJAMES!!!')
+  var noteListView = new NoteListView(noteList);
+  assert.isTrue(noteListView.getHTML() === "<ul><li><div>HELLODAVIDHELLOJAMES</div></li></ul>");
+}
+testNoteListViewShortensNotesWhenLong()
