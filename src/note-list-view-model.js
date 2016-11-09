@@ -11,7 +11,7 @@
     } else {
     var htmlOutput = "<ul>"
     for (var i = 0; i < arrayLength; i++) {
-      htmlOutput += "<li><div>" + this.list.notes[i].getText().substr(0, 20) + "</div></li>"
+      htmlOutput += "<li><div>" + '<a href="#notes/' + this.list.notes[i].id + '">' + this.list.notes[i].getText().substr(0, 20) + "</a></div></li>"
     };
     htmlOutput += "</ul>"
   }
