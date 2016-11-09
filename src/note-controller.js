@@ -2,13 +2,12 @@
 
     function NoteController(noteList) {
       this.noteList = noteList;
-      this.noteListView = new NoteListView(this.noteList);
+      this.noteListView = new NoteListView(noteList);
     }
 
-    NoteController.prototype.testFunction = function(wlocation) {
-      console.log("told you I was a function");
-      // var urlID = wlocation.hash.split("#notes/")[1];
-      // return this.noteListView.list.notes[urlID].getText();
+    NoteController.prototype.getNoteFromUrl = function(location) {
+      var urlID = location.hash.split("#notes/")[1];
+      return this.noteListView.list.getNoteText(urlID);
     };
 
     NoteController.prototype.generateHTML = function () {
@@ -21,12 +20,11 @@
     };
 
     NoteController.prototype.changeNote = function() {
-      window.addEventListener("hashchange", this.showNoteOnPage);
+      window.addEventListener("hashchange", this.showNoteOnPage());
     };
 
     NoteController.prototype.showNoteOnPage = function() {
-      var loc = window.location;
-      var s = this.testFunction(loc);
+      var s = this.getNoteFromUrl(window.location);
       this.showNote(s);
     };
 
@@ -35,7 +33,6 @@
         .getElementById("note")
         .innerHTML = note;
     };
-
 
     exports.NoteController = NoteController;
 
