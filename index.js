@@ -7,3 +7,4 @@ list.createNote("Result.")
 var noteController = new NoteController(list);
 noteController.renderList();
 noteController.changeNote();
+ 

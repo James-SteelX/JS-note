@@ -5,11 +5,6 @@
       this.noteListView = new NoteListView(noteList);
     }
 
-    NoteController.prototype.getNoteFromUrl = function(location) {
-      var urlID = location.hash.split("#notes/")[1];
-      return this.noteListView.list.getNoteText(urlID);
-    };
-
     NoteController.prototype.generateHTML = function () {
       return this.noteListView.getHTML();
     };
@@ -27,6 +22,13 @@
       var s = this.getNoteFromUrl(window.location);
       this.showNote(s);
     };
+
+   NoteController.prototype.getNoteFromUrl = function(location) {
+      var urlID = location.hash.split("#notes/")[1];
+      console.log(urlID)
+      return this.noteListView.list.getNoteText(urlID);
+    };
+
 
     NoteController.prototype.showNote = function(note) {
       document
