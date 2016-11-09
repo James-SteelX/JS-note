@@ -22,5 +22,5 @@
   };
 
   exports.NoteList = NoteList;
-  exports.addNote = this.addNote;
+
 })(this);
