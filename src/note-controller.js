@@ -5,6 +5,15 @@
       this.noteListView = new NoteListView(noteList);
     }
 
+    interceptFromSubmit();
+
+     function interceptFromSubmit() {
+      window.addEventListener("submit", function(clickEvent) {
+        clickEvent.preventDefault();
+        console.log(clickEvent)
+      });
+     }
+
     changeNote();
 
     function changeNote() {
@@ -25,9 +34,6 @@
       document.getElementById("note").innerHTML = singleNoteView.getSingleHTML();
     }
 
-    // NoteController.prototype.interceptForm = function() {
-    //   window.addEventListener("submit", console.log("hi"))
-    // };
     NoteController.prototype.generateHTML = function () {
       return this.noteListView.getHTML();
     };
