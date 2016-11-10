@@ -20,8 +20,6 @@
     };
 
     function showNote(note_id) {
-      console.log(this);
-      console.log(this.noteList);
       var note = this.noteList.findNoteById(parseInt(note_id));
       var singleNoteView = new SingleNote(note);
       document.getElementById("note").innerHTML = singleNoteView.getSingleHTML();
