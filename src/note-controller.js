@@ -5,6 +5,31 @@
       this.noteListView = new NoteListView(noteList);
     }
 
+    changeNote();
+
+    function changeNote() {
+      window.addEventListener("hashchange", showNoteOnPage);
+    };
+
+    function showNoteOnPage() {
+      showNote(getNoteIdFromUrl(window.location));
+    };
+
+   function getNoteIdFromUrl(location) {
+      return location.hash.split("#notes/")[1];
+    };
+
+    function showNote(note_id) {
+      console.log(this);
+      console.log(this.noteList);
+      var note = this.noteList.findNoteById(parseInt(note_id));
+      var singleNoteView = new SingleNote(note);
+      document.getElementById("note").innerHTML = singleNoteView.getSingleHTML();
+    }
+
+    // NoteController.prototype.interceptForm = function() {
+    //   window.addEventListener("submit", console.log("hi"))
+    // };
     NoteController.prototype.generateHTML = function () {
       return this.noteListView.getHTML();
     };
@@ -13,32 +38,6 @@
       var list = this.generateHTML();
       document.getElementById("app").innerHTML = list;
     };
-
-    // NoteController.prototype.changeNote = function() {
-    //   window.addEventListener("hashchange", this.showNoteOnPage());
-    // };
-
-    NoteController.prototype.showNoteOnPage = function() {
-      var s = this.getNoteFromUrl(window.location);
-      this.showNote(s);
-    };
-
-   NoteController.prototype.getNoteFromUrl = function(location) {
-      var urlID = location.hash.split("#notes/")[1];
-      return this.noteListView.list.getNoteText(urlID);
-    };
-
-
-    NoteController.prototype.showNote = function(note) {
-      document
-        .getElementById("note")
-        .innerHTML = note;
-    };
-
-    // NoteController.prototype.interceptForm = function() {
-    //   window.addEventListener("submit", console.log("hi"))
-    // };
-
 
     exports.NoteController = NoteController;
 
